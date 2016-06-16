@@ -10,9 +10,9 @@ export default class App extends Component {
   render() {
     return (
       <div className="container">
-        this is the parent component
+        <h3>React Homework</h3>
         <Child />
       </div>
-    );  
+    );
   }
 }
