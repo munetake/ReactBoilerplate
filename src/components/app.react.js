@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import Child from './child.react';
+import Display from './display.react'
 
 export default class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      response: ""
+      response: []
     };
   }
 
@@ -20,11 +21,17 @@ export default class App extends Component {
       });
   }
 
+  _callback = (obj) => {
+    this.setState({response: obj});
+    console.log(this.state.response);
+  }
+
   render() {
     return (
       <div className="container">
         <h3>React Homework</h3>
-        <Child />
+        <Child callback={this._callback}/>
+        <Display storageContacts={this.state.response}/>
       </div>
     );
   }

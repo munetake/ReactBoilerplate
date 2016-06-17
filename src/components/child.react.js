@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 
 export default class Child extends Component {
 
@@ -11,9 +12,19 @@ export default class Child extends Component {
     };
   }
 
-  _handleClick = () => {
-    let obj = this.state;
-    console.log(obj);
+  _getInitialState = () => {
+    return {name: "", address: "", quote: ""};
+  }
+
+  _handleClick = (event) => {
+    let newContact = this.state;
+    Axios.post("/api/v0/sample", newContact)
+      .then((obj) => {
+        this.setState(this._getInitialState());
+        console.log(obj.data.response);
+        this.props.callback(obj.data.response);
+      });
+    console.log(newContact);
   }
 
   _handleChange = (event) => {
@@ -27,15 +38,15 @@ export default class Child extends Component {
       <div className>
         <div className="row">
           <label className="col-md-2">Name: </label>
-          <input type="text" className="col-md-4 wayLeft" name="name" placeholder="Name..." onChange={this._handleChange}/>
+          <input type="text" className="col-md-4 wayLeft" name="name" placeholder="Name..." onChange={this._handleChange} value={this.state.name}/>
         </div>
         <div className="row">
           <label className="col-md-2">Address: </label>
-          <input type="text" className="col-md-4 wayLeft" name="address" placeholder="Address..." onChange={this._handleChange}/><br/>
+          <input type="text" className="col-md-4 wayLeft" name="address" placeholder="Address..." onChange={this._handleChange} value={this.state.address}/><br/>
         </div>
         <div className="row">
           <label className="col-md-2">Favorite Quote: </label>
-          <input type="text" className="col-md-4 wayLeft" name="quote" placeholder="Favorite Quote..." onChange={this._handleChange}/><br/>
+          <input type="text" className="col-md-4 wayLeft" name="quote" placeholder="Favorite Quote..." onChange={this._handleChange} value={this.state.quote}/><br/>
         </div>
         <button type="button" className="btn btn-primary" onClick={this._handleClick}>Submit</button>
       </div>
