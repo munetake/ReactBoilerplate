@@ -23,7 +23,6 @@ export default class App extends Component {
 
   _callback = (obj) => {
     this.setState({response: obj});
-    //console.log(this.state.response);
   }
 
   render() {

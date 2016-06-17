@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const contactSchema = require('../database/mongo');
 const storage = [];
 var id = 0;
 
@@ -8,37 +9,65 @@ var id = 0;
 // use req.query -> this would print {q: "hi"}
 
 router.get('/', (req, res) => {
-  res.send({
-    response: storage
-  });
+  contactSchema.find((err, lists) => {
+    if(err) throw err;
+    res.send({
+      response: lists
+    })
+  })
 });
 
 router.post('/', (req, res) => {
-  let obj = req.body;
-  obj.id = id;
-  obj.isDeleted = false;
+  let newContact = new contactSchema();
+  newContact.id = id;
+  newContact.name = req.body.name;
+  newContact.quote = req.body.quote;
+  newContact.address = req.body.address;
+  newContact.isDeleted = false;
   id++;
-  storage.push(obj);
-  console.log(obj);
-  res.send({
-    response: storage
-  });
+  newContact.save((err) => {
+    if(err) throw err;
+    contactSchema.find((err, lists) => {
+      if(err) throw err;
+      res.send({
+        response: lists
+      })
+    })
+  })
 });
 
 router.put('/:id', (req, res) => {
-  storage[req.params.id].name = req.body.name;
-  storage[req.params.id].address = req.body.address;
-  storage[req.params.id].quote = req.body.quote;
-  res.send({
-    response: storage
-  });
+  contactSchema.findOne({id: req.params.id}, (err, item) => {
+    if(err) throw err;
+    item.name = req.body.name;
+    item.address = req.body.address;
+    item.quote = req.body.quote;
+    item.save((err) => {
+      if(err) throw err;
+      contactSchema.find((err, lists) => {
+        if(err) throw err;
+        res.send({
+          response: lists
+        })
+      })
+    })
+  })
 });
 
 router.delete('/:id', (req, res) => {
-  storage[req.params.id].isDeleted = true;
-  res.send({
-    response: storage
-  });
+  contactSchema.findOne({id: req.params.id}, (err, item) => {
+    if(err) throw err;
+    item.isDeleted = true;
+    item.save((err) => {
+      if(err) throw err;
+      contactSchema.find((err, lists) => {
+        if(err) throw err;
+        res.send({
+          response: lists
+        })
+      })
+    })
+  })
 });
 
 module.exports = router;

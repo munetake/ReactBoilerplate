@@ -15,7 +15,6 @@ export default class Container extends Component {
   _handleEdit = (event) => {
     Axios.put("/api/v0/sample/" + event.target.id, {name: this.state.name, address: this.state.address, quote: this.state.quote})
       .then((obj) => {
-        console.log(obj.data.response);
         this.props.callback(obj.data.response);
       });
   }
@@ -23,13 +22,11 @@ export default class Container extends Component {
   _handleDelete = (event) => {
     Axios.delete("/api/v0/sample/" + event.target.id)
       .then((obj) => {
-        console.log(obj.data.response);
         this.props.callback(obj.data.response);
       });
   }
 
   _handleChange = (event) => {
-
     let obj = {};
     obj[event.target.name] = event.target.value;
     this.setState(obj);
