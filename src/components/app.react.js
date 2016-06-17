@@ -23,7 +23,7 @@ export default class App extends Component {
 
   _callback = (obj) => {
     this.setState({response: obj});
-    console.log(this.state.response);
+    //console.log(this.state.response);
   }
 
   render() {
@@ -31,7 +31,7 @@ export default class App extends Component {
       <div className="container">
         <h3>React Homework</h3>
         <Child callback={this._callback}/>
-        <Display storageContacts={this.state.response}/>
+        <Display callback={this._callback} storageContacts={this.state.response}/>
       </div>
     );
   }

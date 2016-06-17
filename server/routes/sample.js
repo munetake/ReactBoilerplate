@@ -9,7 +9,7 @@ var id = 0;
 
 router.get('/', (req, res) => {
   res.send({
-    response: "Hello World"
+    response: storage
   });
 });
 
@@ -25,15 +25,19 @@ router.post('/', (req, res) => {
   });
 });
 
-router.put('/', (req, res) => {
+router.put('/:id', (req, res) => {
+  storage[req.params.id].name = req.body.name;
+  storage[req.params.id].address = req.body.address;
+  storage[req.params.id].quote = req.body.quote;
   res.send({
-    response: "Hello World"
+    response: storage
   });
 });
 
-router.delete('/', (req, res) => {
+router.delete('/:id', (req, res) => {
+  storage[req.params.id].isDeleted = true;
   res.send({
-    response: "Hello World"
+    response: storage
   });
 });
 

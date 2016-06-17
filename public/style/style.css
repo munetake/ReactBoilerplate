@@ -1,3 +1,7 @@
 .wayLeft {
   padding-left: 0px;
 }
+
+.rowHidden {
+  display: none;
+}

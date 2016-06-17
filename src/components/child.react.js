@@ -21,10 +21,8 @@ export default class Child extends Component {
     Axios.post("/api/v0/sample", newContact)
       .then((obj) => {
         this.setState(this._getInitialState());
-        console.log(obj.data.response);
         this.props.callback(obj.data.response);
       });
-    console.log(newContact);
   }
 
   _handleChange = (event) => {
