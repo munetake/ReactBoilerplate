@@ -4,6 +4,8 @@ import Child from './child.react';
 import Display from './display.react'
 
 // TODO: Make rows of table be text by default. If wanting to edit, use a button trigger to do so.
+// TODO: Use mongo id instead of current id
+//
 
 export default class App extends Component {
 

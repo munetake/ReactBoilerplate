@@ -89,14 +89,14 @@ export default class Container extends Component {
         <td>
           <button
             type="button"
-            id={this.props.contact.id}
+            id={this.props.contact._id}
             className="btn btn-info"
             onClick={this._handleEdit}>
             Save
           </button>
           <button
             type="button"
-            id={this.props.contact.id}
+            id={this.props.contact._id}
             className="btn btn-danger"
             onClick={this._handleDelete}>
             Delete
