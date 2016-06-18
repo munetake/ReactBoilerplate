@@ -13,8 +13,8 @@ router.get('/', (req, res) => {
     if(err) throw err;
     res.send({
       response: lists
-    })
-  })
+    });
+  });
 });
 
 router.post('/', (req, res) => {
@@ -31,9 +31,9 @@ router.post('/', (req, res) => {
       if(err) throw err;
       res.send({
         response: lists
-      })
-    })
-  })
+      });
+    });
+  });
 });
 
 router.put('/:id', (req, res) => {
@@ -48,10 +48,10 @@ router.put('/:id', (req, res) => {
         if(err) throw err;
         res.send({
           response: lists
-        })
-      })
-    })
-  })
+        });
+      });
+    });
+  });
 });
 
 router.delete('/:id', (req, res) => {
@@ -64,10 +64,10 @@ router.delete('/:id', (req, res) => {
         if(err) throw err;
         res.send({
           response: lists
-        })
-      })
-    })
-  })
+        });
+      });
+    });
+  });
 });
 
 module.exports = router;

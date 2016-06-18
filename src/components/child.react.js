@@ -33,20 +33,46 @@ export default class Child extends Component {
 
   render() {
     return (
-      <div className>
+      <div>
         <div className="row">
           <label className="col-md-2">Name: </label>
-          <input type="text" className="col-md-4 wayLeft" name="name" placeholder="Name..." onChange={this._handleChange} value={this.state.name}/>
+          <input
+            type="text"
+            className="col-md-4 wayLeft"
+            name="name"
+            placeholder="Name..."
+            onChange={this._handleChange}
+            value={this.state.name}
+          />
         </div>
         <div className="row">
           <label className="col-md-2">Address: </label>
-          <input type="text" className="col-md-4 wayLeft" name="address" placeholder="Address..." onChange={this._handleChange} value={this.state.address}/><br/>
+          <input
+            type="text"
+            className="col-md-4 wayLeft"
+            name="address"
+            placeholder="Address..."
+            onChange={this._handleChange}
+            value={this.state.address}
+          />
         </div>
         <div className="row">
           <label className="col-md-2">Favorite Quote: </label>
-          <input type="text" className="col-md-4 wayLeft" name="quote" placeholder="Favorite Quote..." onChange={this._handleChange} value={this.state.quote}/><br/>
+          <input
+            type="text"
+            className="col-md-4 wayLeft"
+            name="quote"
+            placeholder="Favorite Quote..."
+            onChange={this._handleChange}
+            value={this.state.quote}
+          />
         </div>
-        <button type="button" className="btn btn-primary" onClick={this._handleClick}>Submit</button>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={this._handleClick}>
+          Submit
+        </button>
       </div>
     );
   }

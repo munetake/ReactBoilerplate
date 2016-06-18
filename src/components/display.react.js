@@ -17,7 +17,11 @@ export default class Display extends Component {
     return (this.props.storageContacts.map((contact, index) => {
       if(!contact.isDeleted){
         return (
-          <Container key={index} callback={this.props.callback} contact={contact}/>
+          <Container
+            key={index}
+            callback={this.props.callback}
+            contact={contact}
+          />
         );
       }
     }));

@@ -27,10 +27,16 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div
+        className="container">
         <h3>React Homework</h3>
-        <Child callback={this._callback}/>
-        <Display callback={this._callback} storageContacts={this.state.response}/>
+        <Child
+          callback={this._callback}
+        />
+        <Display
+          callback={this._callback}
+          storageContacts={this.state.response}
+        />
       </div>
     );
   }

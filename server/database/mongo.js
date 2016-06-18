@@ -8,4 +8,4 @@ var contactSchema = new Mongoose.Schema({ //mongo creates unique identifer
   id: Number
 });
 
-module.exports = Mongoose.model('Contacts', contactSchema); //list is table name
+module.exports = Mongoose.model('Contacts', contactSchema); 
