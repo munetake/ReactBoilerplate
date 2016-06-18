@@ -13,6 +13,10 @@ export default class Display extends Component {
     }
   }
 
+  /**
+   * Helper function for rendering rows of table display
+   * @return containers for elements
+   */
   _renderDisplay= () => {
     return (this.props.storageContacts.map((contact, index) => {
       if(!contact.isDeleted){

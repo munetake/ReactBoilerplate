@@ -12,10 +12,17 @@ export default class Container extends Component {
     }
   }
 
+  /**
+   * Set state when element added
+   */
   componentDidMount() {
       this.setState(this.props.contact);
   }
 
+  /**
+   * Handles Edit Button (Put Request)
+   * @param  onClick event
+   */
   _handleEdit = (event) => {
     Axios.put("/api/v0/sample/" + event.target.id,
       {
@@ -28,6 +35,10 @@ export default class Container extends Component {
       });
   }
 
+  /**
+   * Handles Delete Button (Delete Request)
+   * @param  onClick event
+   */
   _handleDelete = (event) => {
     Axios.delete("/api/v0/sample/" + event.target.id)
       .then((obj) => {
@@ -35,6 +46,10 @@ export default class Container extends Component {
       });
   }
 
+  /**
+   * Handles onChange event for input fields
+   * @param  onChange event
+   */
   _handleChange = (event) => {
     let obj = {};
     obj[event.target.name] = event.target.value;

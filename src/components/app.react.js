@@ -3,6 +3,8 @@ import Axios from 'axios';
 import Child from './child.react';
 import Display from './display.react'
 
+// TODO: Make rows of table be text by default. If wanting to edit, use a button trigger to do so.
+
 export default class App extends Component {
 
   constructor(props) {
@@ -12,6 +14,9 @@ export default class App extends Component {
     };
   }
 
+  /**
+   * Initial Data Poppulation (Get Request)
+   */
   componentDidMount() {
     Axios.get("/api/v0/sample")
       .then((obj) => {
@@ -21,6 +26,10 @@ export default class App extends Component {
       });
   }
 
+  /**
+   * Callback function for setting parent state
+   * @param  obj
+   */
   _callback = (obj) => {
     this.setState({response: obj});
   }

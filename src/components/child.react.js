@@ -12,10 +12,18 @@ export default class Child extends Component {
     };
   }
 
+  /**
+   * Gets initial state.
+   * @return {object} [initial state parameters and values]
+   */
   _getInitialState = () => {
     return {name: "", address: "", quote: ""};
   }
 
+  /**
+   * Handle onClick event (Post Request)
+   * @param  onClick event Submit Button
+   */
   _handleClick = (event) => {
     let newContact = this.state;
     Axios.post("/api/v0/sample", newContact)
@@ -25,6 +33,10 @@ export default class Child extends Component {
       });
   }
 
+  /**
+   * Handle onChange event
+   * @param  onChange event Input Fields
+   */
   _handleChange = (event) => {
     let obj = {};
     obj[event.target.name] = event.target.value;

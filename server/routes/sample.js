@@ -8,6 +8,9 @@ var id = 0;
 // if there are data being send from the frontend via query string like, http://localhost:3000/api/v0/sample/?q=hi
 // use req.query -> this would print {q: "hi"}
 
+  /**
+   * Get All Contacts
+   */
 router.get('/', (req, res) => {
   contactSchema.find((err, lists) => {
     if(err) throw err;
@@ -17,6 +20,9 @@ router.get('/', (req, res) => {
   });
 });
 
+/**
+ * Create New Contact
+ */
 router.post('/', (req, res) => {
   let newContact = new contactSchema();
   newContact.id = id;
@@ -36,6 +42,9 @@ router.post('/', (req, res) => {
   });
 });
 
+/**
+ * Update Contact
+ */
 router.put('/:id', (req, res) => {
   contactSchema.findOne({id: req.params.id}, (err, item) => {
     if(err) throw err;
@@ -54,6 +63,9 @@ router.put('/:id', (req, res) => {
   });
 });
 
+/**
+ * Mark contact as deleted
+ */
 router.delete('/:id', (req, res) => {
   contactSchema.findOne({id: req.params.id}, (err, item) => {
     if(err) throw err;
