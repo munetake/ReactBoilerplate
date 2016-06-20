@@ -11,7 +11,7 @@ const storage = [];
    * Get All Contacts
    */
 router.get('/', (req, res) => {
-  contactSchema.find((err, lists) => {
+  contactSchema.find({isDeleted: false}, (err, lists) => {
     if(err) throw err;
     res.send({
       response: lists
@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
   newContact.isDeleted = false;
   newContact.save((err) => {
     if(err) throw err;
-    contactSchema.find((err, lists) => {
+    contactSchema.find({isDeleted: false}, (err, lists) => {
       if(err) throw err;
       res.send({
         response: lists
@@ -50,7 +50,7 @@ router.put('/:id', (req, res) => {
     item.quote = req.body.quote;
     item.save((err) => {
       if(err) throw err;
-      contactSchema.find((err, lists) => {
+      contactSchema.find({isDeleted: false}, (err, lists) => {
         if(err) throw err;
         res.send({
           response: lists
@@ -69,7 +69,7 @@ router.delete('/:id', (req, res) => {
     item.isDeleted = true;
     item.save((err) => {
       if(err) throw err;
-      contactSchema.find((err, lists) => {
+      contactSchema.find({isDeleted: false}, (err, lists) => {
         if(err) throw err;
         res.send({
           response: lists

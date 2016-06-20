@@ -8,8 +8,10 @@ export default class Container extends Component {
     this.state = {
       name: "",
       address: "",
-      quote: ""
+      quote: "",
+      isEditable: false
     }
+    this.currentState = {};
   }
 
   /**
@@ -32,7 +34,13 @@ export default class Container extends Component {
       })
       .then((obj) => {
         this.props.callback(obj.data.response);
+        this.setState({isEditable: false});
       });
+  }
+
+  _handleCancel = (event) => {
+    this.currentState.isEditable = false;
+    this.setState(this.currentState);
   }
 
   /**
@@ -46,6 +54,11 @@ export default class Container extends Component {
       });
   }
 
+  _handleEditMode = (event) => {
+    this.currentState = this.state;
+    this.setState({isEditable: true});
+  }
+
   /**
    * Handles onChange event for input fields
    * @param  onChange event
@@ -57,12 +70,12 @@ export default class Container extends Component {
   }
 
   render() {
+    if(this.state.isEditable){
       return (
         <tr>
         <td>
           <input
             type="text"
-            id="name"
             name="name"
             value={this.state.name}
             onChange={this._handleChange}
@@ -71,7 +84,6 @@ export default class Container extends Component {
         <td>
           <input
             type="text"
-            id="address"
             name="address"
             value={this.state.address}
             onChange={this._handleChange}
@@ -80,7 +92,6 @@ export default class Container extends Component {
         <td>
           <input
             type="text"
-            id="quote"
             name="quote"
             value={this.state.quote}
             onChange={this._handleChange}
@@ -90,19 +101,51 @@ export default class Container extends Component {
           <button
             type="button"
             id={this.props.contact._id}
-            className="btn btn-info"
+            className="btn btn-info custom"
             onClick={this._handleEdit}>
             Save
           </button>
           <button
             type="button"
             id={this.props.contact._id}
-            className="btn btn-danger"
+            className="btn btn-warning custom"
+            onClick={this._handleCancel}>
+            X
+          </button>
+        </td>
+        </tr>
+      );
+    }
+    else {
+      return (
+        <tr>
+        <td>
+          {this.state.name}
+        </td>
+        <td>
+          {this.state.address}
+        </td>
+        <td>
+          {this.state.quote}
+        </td>
+        <td>
+          <button
+            type="button"
+            id={this.props.contact._id}
+            className="btn btn-info custom"
+            onClick={this._handleEditMode}>
+            Edit
+          </button>
+          <button
+            type="button"
+            id={this.props.contact._id}
+            className="btn btn-danger custom"
             onClick={this._handleDelete}>
             Delete
           </button>
         </td>
         </tr>
       );
+    }
   }
 }

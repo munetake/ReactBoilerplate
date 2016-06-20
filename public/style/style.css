@@ -5,3 +5,19 @@
 .rowHidden {
   display: none;
 }
+
+table {
+  table-layout: fixed;
+}
+
+.custom {
+  width: 50%
+}
+
+.mybottom {
+  margin-bottom: 5px;
+}
+
+.separator {
+  border-bottom: black solid 8px;
+}

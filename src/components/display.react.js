@@ -19,15 +19,13 @@ export default class Display extends Component {
    */
   _renderDisplay= () => {
     return (this.props.storageContacts.map((contact, index) => {
-      if(!contact.isDeleted){
-        return (
-          <Container
-            key={index}
-            callback={this.props.callback}
-            contact={contact}
-          />
-        );
-      }
+      return (
+        <Container
+          key={index}
+          callback={this.props.callback}
+          contact={contact}
+        />
+      );
     }));
   }
 

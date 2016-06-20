@@ -46,7 +46,7 @@ export default class Child extends Component {
   render() {
     return (
       <div>
-        <div className="row">
+        <div className="row mybottom">
           <label className="col-md-2">Name: </label>
           <input
             type="text"
@@ -57,7 +57,7 @@ export default class Child extends Component {
             value={this.state.name}
           />
         </div>
-        <div className="row">
+        <div className="row mybottom">
           <label className="col-md-2">Address: </label>
           <input
             type="text"
@@ -68,9 +68,9 @@ export default class Child extends Component {
             value={this.state.address}
           />
         </div>
-        <div className="row">
+        <div className="row mybottom">
           <label className="col-md-2">Favorite Quote: </label>
-          <input
+          <textarea
             type="text"
             className="col-md-4 wayLeft"
             name="quote"
@@ -81,7 +81,7 @@ export default class Child extends Component {
         </div>
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-primary mybottom"
           onClick={this._handleClick}>
           Submit
         </button>
