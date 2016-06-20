@@ -110,7 +110,7 @@ export default class Container extends Component {
             id={this.props.contact._id}
             className="btn btn-warning custom"
             onClick={this._handleCancel}>
-            X
+            Cancel
           </button>
         </td>
         </tr>

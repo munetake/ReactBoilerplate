@@ -3,8 +3,6 @@ import Axios from 'axios';
 import Child from './child.react';
 import Display from './display.react'
 
-// TODO: Make rows of table be text by default. If wanting to edit, use a button trigger to do so.
-
 export default class App extends Component {
 
   constructor(props) {
@@ -38,7 +36,7 @@ export default class App extends Component {
     return (
       <div
         className="container">
-        <h3>React Homework</h3>
+        <h2 className="title">React Homework</h2>
         <Child
           callback={this._callback}
         />
