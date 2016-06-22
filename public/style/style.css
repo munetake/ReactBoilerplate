@@ -21,3 +21,7 @@ table {
 .separator {
   border-bottom: black solid 8px;
 }
+
+td {
+  word-wrap: break-word;
+}

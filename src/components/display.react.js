@@ -7,11 +7,6 @@ class Display extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      name: "",
-      address: "",
-      quote: ""
-    }
   }
 
   componentDidMount () {
@@ -56,10 +51,10 @@ class Display extends Component {
   render() {
       return (
         <div>
-        <h3>React Redux Project</h3>
+        <h3>Contact Display Page</h3>
         <Link className="btn btn-primary" to="/addContact">Add New Contact</Link>
         <div className="table-responsive">
-        <table className="table table-striped">
+        <table className="table table-striped customTable">
         <thead>
           <tr>
             <th>Name</th>

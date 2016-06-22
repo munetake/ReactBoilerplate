@@ -9,6 +9,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
+      <h3>React Redux Project</h3>
         {this.props.children}
       </div>
     );
