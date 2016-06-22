@@ -16,10 +16,11 @@ class Update extends Component {
 
   componentDidMount () {
     this.props.grab_one_data(this.props.params.id);
+    this.setState(this.props.data.data[0]);
   }
 
-  componentWillReceiveProps () {
-      this.setState(this.props.data.data[0]);
+  componentWillReceiveProps(nextProps) {
+      this.setState(nextProps.data.data[0]);
   }
   /**
    * Gets initial state.
