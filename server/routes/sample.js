@@ -19,6 +19,15 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/:id', (req, res) => {
+  contactSchema.findOne({_id: req.params.id}, (err, item) => {
+    if(err) throw err;
+    res.send({
+      response: item
+    });
+  });
+});
+
 /**
  * Create New Contact
  */

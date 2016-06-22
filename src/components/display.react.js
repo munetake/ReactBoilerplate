@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import Axios from 'axios';
-import Container from './container.react'
+import React, {Component, PropTypes} from 'react';
+import {connect} from "react-redux";
+import {Link} from 'react-router';
+import * as actions from "../actions/change_child.action";
 
-export default class Display extends Component {
+class Display extends Component {
 
   constructor(props) {
     super(props);
@@ -13,24 +14,49 @@ export default class Display extends Component {
     }
   }
 
+  componentDidMount () {
+    this.props.grab_data();
+  }
+
+  _handleDelete = (event) => {
+    this.props.delete_data(event.target.id)
+  }
+
   /**
    * Helper function for rendering rows of table display
    * @return containers for elements
    */
   _renderDisplay= () => {
-    return (this.props.storageContacts.map((contact, index) => {
+    return (this.props.data.data.map((contact, index) => {
+      let path = "/updateContact/" + contact._id;
       return (
-        <Container
-          key={index}
-          callback={this.props.callback}
-          contact={contact}
-        />
+        <tr key={index}>
+        <td>{contact.name}</td>
+        <td>{contact.address}</td>
+        <td>{contact.quote}</td>
+        <td>
+        <Link
+          to={path}
+          className="btn btn-info custom">
+          Edit
+        </Link>
+        <button
+          type="button"
+          id={contact._id}
+          className="btn btn-danger custom"
+          onClick={this._handleDelete}>
+          Delete
+        </button>
+        </td>
+        </tr>
       );
     }));
   }
 
   render() {
       return (
+        <div>
+        <Link className="btn btn-primary" to="/addContact">Add New Contact</Link>
         <div className="table-responsive">
         <table className="table table-striped">
         <thead>
@@ -46,6 +72,15 @@ export default class Display extends Component {
         </tbody>
         </table>
         </div>
+        </div>
       );
   }
 }
+
+function mapStateToProps(state) {
+  return{
+    data: state.list
+  };
+}
+
+export default connect(mapStateToProps, actions)(Display);

@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Link} from 'react-router';
 import * as actions from "../actions/change_child.action";
 
-class Child extends Component {
+class Update extends Component {
 
   constructor(props){
     super(props);
@@ -14,6 +14,13 @@ class Child extends Component {
     }
   }
 
+  componentDidMount () {
+    this.props.grab_one_data(this.props.params.id);
+  }
+
+  componentWillReceiveProps () {
+      this.setState(this.props.data.data[0]);
+  }
   /**
    * Gets initial state.
    * @return {object} [initial state parameters and values]
@@ -23,8 +30,7 @@ class Child extends Component {
   }
 
   _handleClick = () => {
-    this.props.push_data(this.state);
-    this.setState(this._getInitialState());
+    this.props.put_data(this.state);
   }
 
   /**
@@ -40,7 +46,7 @@ class Child extends Component {
   render(){
     return (
       <div>
-        <h1>Add Contact</h1>
+        <h1>Update Contact</h1>
         <div className="row mybottom">
           <label className="col-md-2">Name: </label>
           <input
@@ -92,4 +98,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, actions)(Child);
+export default connect(mapStateToProps, actions)(Update);

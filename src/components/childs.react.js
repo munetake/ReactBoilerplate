@@ -1,17 +1,15 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from "react-redux";
-import {Link} from 'react-router';
-import * as actions from "../actions/change_child.action";
+import React, { Component } from 'react';
+import Axios from 'axios';
 
-class Child extends Component {
+export default class Childs extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       name: "",
       address: "",
       quote: ""
-    }
+    };
   }
 
   /**
@@ -22,9 +20,17 @@ class Child extends Component {
     return {name: "", address: "", quote: ""};
   }
 
-  _handleClick = () => {
-    this.props.push_data(this.state);
-    this.setState(this._getInitialState());
+  /**
+   * Handle onClick event (Post Request)
+   * @param  onClick event Submit Button
+   */
+  _handleClick = (event) => {
+    let newContact = this.state;
+    Axios.post("/api/v0/sample", newContact)
+      .then((obj) => {
+        this.setState(this._getInitialState());
+        this.props.callback(obj.data.response);
+      });
   }
 
   /**
@@ -37,10 +43,9 @@ class Child extends Component {
     this.setState(obj);
   }
 
-  render(){
+  render() {
     return (
       <div>
-        <h1>Add Contact</h1>
         <div className="row mybottom">
           <label className="col-md-2">Name: </label>
           <input
@@ -79,17 +84,8 @@ class Child extends Component {
           className="btn btn-primary mybottom"
           onClick={this._handleClick}>
           Submit
-        </button><br/>
-
+        </button>
       </div>
     );
   }
 }
-
-function mapStateToProps(state) {
-  return{
-    data: state.list
-  };
-}
-
-export default connect(mapStateToProps, actions)(Child);
