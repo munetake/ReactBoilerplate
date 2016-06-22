@@ -8,8 +8,7 @@ import Update from './components/update.react';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRedirect to="/display" />
-    <Route path="/display" component={Display}/>
+    <IndexRoute component={Display}/>
     <Route path="/addContact" component={Child} />
     <Route path="/updateContact/:id" component={Update} />
   </Route>
