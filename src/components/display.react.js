@@ -56,6 +56,7 @@ class Display extends Component {
   render() {
       return (
         <div>
+        <h3>React Redux Project</h3>
         <Link className="btn btn-primary" to="/addContact">Add New Contact</Link>
         <div className="table-responsive">
         <table className="table table-striped">

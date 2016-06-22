@@ -53,7 +53,7 @@ class Update extends Component {
   render(){
     return (
       <div>
-        <h1>Update Contact</h1>
+        <h3>Update Contact</h3>
         <div className="row mybottom">
           <label className="col-md-2">Name: </label>
           <input
@@ -91,7 +91,7 @@ class Update extends Component {
           type="button"
           className="btn btn-primary mybottom"
           onClick={this._handleClick}>
-          Submit
+          Save
         </button>
         <button
           type="button"

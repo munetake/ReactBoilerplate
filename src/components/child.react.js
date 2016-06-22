@@ -46,7 +46,7 @@ class Child extends Component {
   render(){
     return (
       <div>
-        <h1>Add Contact</h1>
+        <h3>Add Contact</h3>
         <div className="row mybottom">
           <label className="col-md-2">Name: </label>
           <input
