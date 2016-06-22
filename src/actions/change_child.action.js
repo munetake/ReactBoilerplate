@@ -34,11 +34,11 @@ export function grab_one_data(data) {
 }
 
 export function put_data(data) {
-  const response = Axios.put("/api/v0/sample/" + data,
+  const response = Axios.put("/api/v0/sample/" + data._id,
     {
-      name: this.state.name,
-      address: this.state.address,
-      quote: this.state.quote
+      name: data.name,
+      address: data.address,
+      quote: data.quote
     });
   return {
     type: PUT,

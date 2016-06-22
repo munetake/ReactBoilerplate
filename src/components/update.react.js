@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from "react-redux";
-import {Link} from 'react-router';
+import {Link, browserHistory} from 'react-router';
 import * as actions from "../actions/change_child.action";
 
 class Update extends Component {
@@ -31,6 +31,7 @@ class Update extends Component {
 
   _handleClick = () => {
     this.props.put_data(this.state);
+    browserHistory.push('/');
   }
 
   /**
@@ -41,6 +42,11 @@ class Update extends Component {
     let obj = {};
     obj[event.target.name] = event.target.value;
     this.setState(obj);
+  }
+
+  _handleCancel = () => {
+    this.setState(this._getInitialState());
+    browserHistory.push('/');
   }
 
   render(){
@@ -85,8 +91,13 @@ class Update extends Component {
           className="btn btn-primary mybottom"
           onClick={this._handleClick}>
           Submit
-        </button><br/>
-
+        </button>
+        <button
+          type="button"
+          className="btn btn-warning mybottom"
+          onClick={this._handleCancel}>
+          Cancel
+        </button>
       </div>
     );
   }
