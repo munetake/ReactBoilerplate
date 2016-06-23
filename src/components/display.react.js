@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Link} from 'react-router';
 import * as actions from "../actions/change_child.action";
 
-class Display extends Component {
+export class Display extends Component {
 
   constructor(props) {
     super(props);

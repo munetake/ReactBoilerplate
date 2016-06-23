@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Link, browserHistory} from 'react-router';
 import * as actions from "../actions/change_child.action";
 
-class Child extends Component {
+export class Child extends Component {
 
   constructor(props){
     super(props);
