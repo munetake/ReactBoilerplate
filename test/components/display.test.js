@@ -8,7 +8,7 @@ describe("Test the Display component", () => {
   beforeEach(() => {
     const state = {
         list: {
-          
+
           }
         }
       const props = {
