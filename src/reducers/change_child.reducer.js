@@ -5,7 +5,7 @@ const initial_state = {
 }
 
 
-export default function(state = initial_state, action) {
+export default function(state = initial_state, action = {type: ""}) {
   switch(action.type){
     case GRAB:
       return {...state, data: action.payload.data.response};

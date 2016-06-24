@@ -13,4 +13,3 @@ export default (
     <Route path="/updateContact/:id" component={Update} />
   </Route>
 );
-    // <IndexRoute component={Greeting1} />

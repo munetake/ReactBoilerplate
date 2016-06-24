@@ -2,7 +2,7 @@ import Axios from "axios";
 import {GRAB, PUSH, DELETE, PUT, GETONE} from "./constants";
 
 export function grab_data() {
-  const response = Axios.get("/api/v0/sample")
+  const response = Axios.get("/api/v0/sample");
   return {
     type: GRAB,
     payload: response
