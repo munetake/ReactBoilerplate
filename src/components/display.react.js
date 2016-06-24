@@ -52,7 +52,11 @@ export class Display extends Component {
       return (
         <div>
         <h3>Contact Display Page</h3>
-        <Link className="btn btn-primary" to="/addContact">Add New Contact</Link>
+        <Link
+          className="btn btn-primary"
+          to="/addContact">
+          Add New Contact
+        </Link>
         <div className="table-responsive">
         <table className="table table-striped customTable">
         <thead>

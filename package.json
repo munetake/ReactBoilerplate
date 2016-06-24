@@ -7,8 +7,13 @@
     "start": "webpack --watch & nodemon server.js",
     "start:windows": "node ./node_modules/concurrently/src/main.js --kill-others \"webpack --watch\" \"nodemon server.js\"",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "lint": "jshint .",
+    "validate": "npm ls"
   },
+  "pre-commit": [
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sinwailam193/Redux-React-ReactRouter.git"
@@ -42,6 +47,7 @@
     "mocha": "^2.5.3",
     "mongoose": "^4.5.0",
     "morgan": "^1.7.0",
+    "precommit-hook": "^3.0.0",
     "react": "^15.1.0",
     "react-addons-test-utils": "^15.1.0",
     "react-dom": "^15.1.0",
